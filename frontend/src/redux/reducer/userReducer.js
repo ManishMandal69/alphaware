@@ -5,7 +5,7 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async ( prop ) => {
     try {
-      const response = await axios.post(`http://localhost:3000/api/users/login`, { email:prop.email, password: prop.password });
+      const response = await axios.post(`https://alphaware-2.onrender.com/api/users/login`, { email:prop.email, password: prop.password });
       localStorage.setItem('token', response.data.token)
       return response.data.user;
     } catch (error) {
@@ -18,7 +18,7 @@ export const registerUser = createAsyncThunk(
     "user/register",
     async ( prop ) => {
       try {
-        const response = await axios.post(`http://localhost:3000/api/users/register`, { name:prop.name,email:prop.email, password: prop.password });
+        const response = await axios.post(`https://alphaware-2.onrender.com/api/users/register`, { name:prop.name,email:prop.email, password: prop.password });
         return response.data;
       } catch (error) {
         throw new Error(error.response ? error.response.data : error.message);
@@ -30,7 +30,7 @@ export const registerUser = createAsyncThunk(
     "user/verify",
     async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/users/verify`, {
+        const response = await axios.get(`https://alphaware-2.onrender.com/api/users/verify`, {
           headers:{
             "x-auth-token": localStorage.getItem("token")
           }

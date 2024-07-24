@@ -5,7 +5,7 @@ export const getJob = createAsyncThunk(
   "admin/joblist",
   async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/jobs`,{
+      const response = await axios.get(`https://alphaware-2.onrender.com/api/jobs`,{
         headers:{
             'x-auth-token': localStorage.getItem('token')
         }
@@ -21,7 +21,7 @@ export const createJob = createAsyncThunk(
     "admin/jobform",
     async ( prop ) => {
       try {
-        const response = await axios.post(`http://localhost:3000/api/jobs/create`,{
+        const response = await axios.post(`https://alphaware-2.onrender.com/api/jobs/create`,{
             company:prop.company,
             position:prop.position,
             contract:prop.contract,
@@ -43,7 +43,7 @@ export const createJob = createAsyncThunk(
     "admin/jobedit",
     async (prop) => {
       try {
-        const response = await axios.put(`http://localhost:3000/api/jobs/${prop.id}`, {
+        const response = await axios.put(`https://alphaware-2.onrender.com/api/jobs/${prop.id}`, {
           company: prop.company,
           position: prop.position,
           contract: prop.contract,
@@ -64,7 +64,7 @@ export const createJob = createAsyncThunk(
     "admin/jobdelete",
     async (id) => {
       try {
-        const response = await axios.delete(`http://localhost:3000/api/jobs/${id}`,{
+        const response = await axios.delete(`https://alphaware-2.onrender.com/api/jobs/${id}`,{
           headers:{
               'x-auth-token': localStorage.getItem('token')
           }

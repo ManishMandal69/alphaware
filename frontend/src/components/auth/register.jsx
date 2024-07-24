@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/reducer/userReducer';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const Navigate = useNavigate()
   const [formData, setFormData] = useState({name:'', email: '', password: '' });
   const dispatch = useDispatch();  
   const onSubmit = e => {
     e.preventDefault();
     dispatch(registerUser({name: formData.name, email:formData.email, password:formData.password}));
+    Navigate("/")
   };
 
   return (
@@ -16,7 +19,6 @@ const Register = () => {
         <div className="container text-center">
           <h1 className='text-2xl font-bold'>Create your account</h1>
         </div>
-        <div className="container">
           <form onSubmit={onSubmit}>
             <div className="container mt-3 h-[74px]">
               <p className='text-[12px]'>Name</p>
@@ -58,10 +60,9 @@ const Register = () => {
           <div className='mt-4 text-center'>
             <span className='text-[14px]'>
               Have an Account? {' '}
-              <span className='uppercase font-bold'>Login</span>
+              <Link to={"/"} className='uppercase font-bold'>Login</Link>
             </span>
           </div>
-        </div>
       </div>
     </div>
   );

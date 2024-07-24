@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/reducer/userReducer';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate()
@@ -27,11 +27,10 @@ const { user } = useSelector((state) => state.user);
 
   return (
     <div className='flex items-center justify-center'>
-      <div className="container w-[476px] h-[320px] mt-5 p-10 rounded-lg shadow-md border">
-        <div className="container text-center">
+      <div className=" w-[476px] h-[420px] mt-5 p-10 rounded-lg shadow-md border">
+        <div className=" text-center">
           <h1 className='text-2xl font-bold'>Login</h1>
         </div>
-        <div className="container">
           <form onSubmit={onSubmit}>
             <div className="container mt-3 h-[74px]">
               <p className='text-[12px]'>Email</p>
@@ -60,7 +59,12 @@ const { user } = useSelector((state) => state.user);
               Login
             </button>
           </form>
-        </div>
+          <div className='mt-4 text-center'>
+            <span className='text-[14px]'>
+              Don't have Account? {' '}
+              <Link to={"/register"} className='uppercase font-bold'>SignUp</Link>
+            </span>
+          </div>
       </div>
     </div>
   );
